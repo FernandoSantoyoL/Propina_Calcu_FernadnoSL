@@ -54,6 +54,10 @@ import androidx.annotation.DrawableRes
 import androidx.compose.material3.Icon
 import androidx.compose.ui.res.painterResource
 
+/**
+ * Se encarga de configurar el tema y el contenido de la aplicación.
+ */
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +74,11 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+/**
+ * Composable que representa un campo de entrada de número personalizado.
+ * Permite al usuario ingresar un valor numérico.
+ */
 
 @Composable
     fun EditNumberField(
@@ -93,9 +102,8 @@ class MainActivity : ComponentActivity() {
 
 
 /**
- * Calculates the tip based on the user input and format the tip amount
- * according to the local currency.
- * Example would be "$10.00".
+ * Función que calcula la propina basada en la entrada del usuario y formatea el
+ * monto de la propina de acuerdo con la moneda local.
  */
 private fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boolean): String {
     var tip = tipPercent / 100 * amount
@@ -105,6 +113,11 @@ private fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boo
     return NumberFormat.getCurrencyInstance().format(tip)
 }
 
+/**
+ * Composable principal que representa la pantalla de la aplicación.
+ * Contiene campos de entrada para el monto de la factura y el porcentaje de propina,
+ * así como una opción para redondear la propina.
+ */
 @Composable
     fun TipTimeLayout() {
     var amountInput by remember { mutableStateOf("") }
@@ -164,6 +177,10 @@ private fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boo
     }
 }
 
+/**
+ * Composable que representa una fila con una opción de redondear la propina.
+ */
+
 @Composable
 fun RoundTheTipRow(roundUp: Boolean,onRoundUpChanged: (Boolean) -> Unit, modifier: Modifier = Modifier) {
     Row(
@@ -182,6 +199,10 @@ fun RoundTheTipRow(roundUp: Boolean,onRoundUpChanged: (Boolean) -> Unit, modifie
         )
     }
 }
+
+/**
+ * Composable para previsualizar la pantalla de la aplicación en el diseño de Compose.
+ */
 
 @Preview(showBackground = true)
 @Composable
